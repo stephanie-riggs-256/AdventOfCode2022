@@ -8,7 +8,7 @@ public class code {
 
     public static void main(String[] args) {
         code run = new code();
-//        System.out.printf(String.valueOf(run.mostCaloriesCalculation()));
+        System.out.printf(String.valueOf(run.mostCaloriesCalculation()));
         System.out.printf(String.valueOf(run.topThreeMostCaloriesCalculation()));
     }
 
