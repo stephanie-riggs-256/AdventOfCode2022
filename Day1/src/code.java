@@ -13,7 +13,7 @@ public class code {
 
     public int mostCaloriesCalculation() {
         int totalCalories = 0;
-        for(int i = 0; i < countCaloriesPerElf().size(); i++) {
+        for(int i=0; i<countCaloriesPerElf().size(); i++) {
             if(countCaloriesPerElf().get(i)>totalCalories) {
                 totalCalories = countCaloriesPerElf().get(i);
             }
@@ -22,7 +22,7 @@ public class code {
     }
 
     public List<String> convertFileToArrayList() {
-        List<String> caloriesList = new ArrayList<String>();
+        List<String> caloriesList = new ArrayList<>();
         String filePath = "/Users/stephanieriggs/IdeaProjects/AdventOfCode2022/Day1/src/input.txt";
         try {
             FileReader calorieInformation = new FileReader(filePath);
@@ -33,21 +33,21 @@ public class code {
                 caloriesList.add(str);
             }
         } catch (FileNotFoundException e) {
-            System.out.printf("Error: file not found\n");
+            System.out.print("Error: file not found\n");
         }
         return caloriesList;
     }
 
     public List<Integer> countCaloriesPerElf() {
         List<String> calorieInformation = convertFileToArrayList();
-        List<Integer> caloriesPerElf = new ArrayList<Integer>();
-        Integer currentTotal = 0;
-        for(int i=0; i<calorieInformation.size(); i++) {
-            if(calorieInformation.get(i)=="") {
+        List<Integer> caloriesPerElf = new ArrayList<>();
+        int currentTotal = 0;
+        for (String s : calorieInformation) {
+            if (s.equals("")) {
                 caloriesPerElf.add(currentTotal);
                 currentTotal = 0;
             } else {
-                currentTotal += Integer.valueOf(calorieInformation.get(i));
+                currentTotal += Integer.parseInt(s);
             }
         }
         caloriesPerElf.add(currentTotal);
