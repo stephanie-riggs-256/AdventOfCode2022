@@ -8,7 +8,8 @@ public class code {
 
     public static void main(String[] args) {
         code run = new code();
-        System.out.printf(String.valueOf(run.mostCaloriesCalculation()));
+//        System.out.printf(String.valueOf(run.mostCaloriesCalculation()));
+        System.out.printf(String.valueOf(run.topThreeMostCaloriesCalculation()));
     }
 
     public int mostCaloriesCalculation() {
@@ -19,6 +20,25 @@ public class code {
             }
         }
         return totalCalories;
+    }
+
+    public int topThreeMostCaloriesCalculation() {
+        int firstMostCalories = 0;
+        int secondMostCalories = 0;
+        int thirdMostCalories = 0;
+        for(int i=0; i<countCaloriesPerElf().size(); i++) {
+            if(countCaloriesPerElf().get(i)>firstMostCalories) {
+                thirdMostCalories = secondMostCalories;
+                secondMostCalories = firstMostCalories;
+                firstMostCalories = countCaloriesPerElf().get(i);
+            } else if(countCaloriesPerElf().get(i)>secondMostCalories) {
+                thirdMostCalories = secondMostCalories;
+                secondMostCalories = countCaloriesPerElf().get(i);
+            } else if(countCaloriesPerElf().get(i)>thirdMostCalories) {
+                thirdMostCalories = countCaloriesPerElf().get(i);
+            }
+        }
+        return firstMostCalories + secondMostCalories + thirdMostCalories;
     }
 
     public List<String> convertFileToArrayList() {
